@@ -70,7 +70,7 @@ export default async function EventPage({ params }: EventPageProps) {
 
       {/* Interactive Seat Map */}
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-main-white">Select your VIP Seat</h2>
+        <h2 className="text-43 font-medium text-main-white">Select your VIP Seat</h2>
         
         {/* We check if the key exists to prevent crashing if data is missing */}
         {event.seatsio_event_key ? (
@@ -87,9 +87,27 @@ export default async function EventPage({ params }: EventPageProps) {
 
       {/* Section: Real Stadium Visual */}
       <section className="space-y-4">
-        <h3 className="text-24 font-medium text-main-white">About the Venue</h3>
+        <h2 className="text-43 font-medium text-main-white">About the Venue</h2>
         {event.real_event_photo_url && (
-          <div className="mt-6 relative h-[400px] p-[3.2rem] w-full rounded-2xl overflow-hidden border border-slate-800">
+          <div className="mt-6 relative h-[400px] p-[3.2rem] w-full rounded-2xl overflow-hidden border border-slate-800 flex flex-col items-center justify-between">
+            <div className="w-full relative z-20 justify-between flex items-center">
+              <div className="flex-start-col gap-2">
+
+                <h3 className="text-main-white subtitle-medium">{event.stadium_name}</h3>
+                <p className="text-main-white paragraph-18-normal">{event.stadium_address}</p>
+              </div>
+
+              <div>
+                <p className="text-main-white paragraph-18-normal">
+                  Stadium Capacity {event.stadium_capacity}
+                </p>
+              </div>
+
+            </div>
+
+            <div className="w-full flex items-end justify-end relative z-20">
+              <p className="text-main-white paragraph-18-normal text-right max-w-[62.5rem]">{event.stadium_description}</p>
+            </div>
              <Image 
                src={event.real_event_photo_url} 
                alt={`${event.stadium_name} view`}
@@ -97,11 +115,7 @@ export default async function EventPage({ params }: EventPageProps) {
                className="object-cover hover:scale-105 transition-transform duration-700 "
                priority
              />
-             <div>
-
-             <h4>{event.stadium_name}</h4>
-             <p>{event.stadium_description}</p>
-             </div>
+            
              
              <div className="absolute inset-0 bg-gradient-to-b from-black-base/80 to-black-base/35 pointer-events-none" />
           </div>

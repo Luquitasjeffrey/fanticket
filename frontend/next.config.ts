@@ -18,7 +18,6 @@ const nextConfig: NextConfig = {
     "encoding"
   ],
 
-  // Mantén esto por si Next decide usar Webpack en alguna parte del proceso
   webpack: (config) => {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     config.resolve.fallback = {

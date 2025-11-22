@@ -46,7 +46,7 @@ const menuItems: MenuSection[] = [
         title: "MY FAN ZONE",
         items: [
             { icon: Ticket, label: "My Tickets", href: "/my-tickets", badge: 1 },
-            { icon: Wallet, label: "Wallet & Credits", href: "/wallet" },
+            // { icon: Wallet, label: "Wallet & Credits", href: "/wallet" },
             { icon: Gift, label: "Rewards Program", href: "/rewards" },
         ]
     }
@@ -54,15 +54,15 @@ const menuItems: MenuSection[] = [
 
 const bottomItems: MenuItem[] = [
     { icon: Settings, label: "Settings", href: "/settings" },
-    { icon: HelpCircle, label: "Help Center", href: "/help" },
+    { icon: HelpCircle, label: "Help Center", href: "/help-center" },
 ];
 
 export function Sidebar() {
-    const [currentPath, setCurrentPath] = useState("/");
+    const pathname = usePathname()
 
-    // Function to handle navigation
-    const handleNavigation = (href: string) => {
-        setCurrentPath(href);
+    const isLinkActive = (href: string) => {
+        if (href === "/") return pathname === "/";
+        return pathname === href || pathname.startsWith(`${href}/`);
     };
     return (
         <div className="flex h-screen w-[280px] flex-col bg-surface-card text-white border-r border-border p-6 fixed left-0 top-0">
@@ -82,28 +82,32 @@ export function Sidebar() {
                             </h3>
                         )}
                         <div className="space-y-1">
-                            {section.items.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    className={cn(
-                                        "flex items-center justify-between rounded-xl px-4 py-3 text-18 font-medium transition-colors",
-                                        item.active
-                                            ? "bg-red-primary/10 text-red-primary"
-                                            : "text-secondary-white hover:bg-elevate hover:text-white"
-                                    )}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <item.icon className={cn("h-5 w-5", item.active ? "text-red-primary" : "text-secondary-white")} />
-                                        <span className="text-18 font-medium">{item.label}</span>
-                                    </div>
-                                    {item.badge && (
-                                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-primary text-10 font-bold text-main-white">
-                                            {item.badge}
-                                        </span>
-                                    )}
-                                </Link>
-                            ))}
+                            {section.items.map((item) => {
+                                const isActive = isLinkActive(item.href);
+                                
+                                return (
+                                    <Link
+                                        key={item.label}
+                                        href={item.href}
+                                        className={cn(
+                                            "flex items-center justify-between rounded-xl px-4 py-3 text-18 font-medium transition-colors",
+                                            isActive
+                                                ? "bg-red-primary/10 text-red-primary"
+                                                : "text-secondary-white hover:bg-elevate hover:text-white"
+                                        )}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <item.icon className={cn("h-5 w-5", isActive ? "text-red-primary" : "text-secondary-white")} />
+                                            <span className="text-18 font-medium">{item.label}</span>
+                                        </div>
+                                        {item.badge && (
+                                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-primary text-10 font-bold text-main-white">
+                                                {item.badge}
+                                            </span>
+                                        )}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
@@ -112,16 +116,25 @@ export function Sidebar() {
             {/* Bottom Actions */}
             <div className="mt-auto space-y-6">
                 <div className="space-y-1">
-                    {bottomItems.map((item) => (
-                        <Link
-                            key={item.label}
-                            href={item.href}
-                            className="flex items-center gap-3 rounded-xl px-4 py-3 text-18 font-medium text-secondary-white transition-colors hover:bg-elevate hover:text-white"
-                        >
-                            <item.icon className="h-5 w-5" />
-                            <span>{item.label}</span>
-                        </Link>
-                    ))}
+                    {bottomItems.map((item) => {
+                        const isActive = isLinkActive(item.href);
+
+                        return (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                className={cn(
+                                    "flex items-center gap-3 rounded-xl px-4 py-3  transition-colors",
+                                    isActive
+                                        ? "bg-red-primary/10 text-red-primary"
+                                        : "text-secondary-white hover:bg-elevate hover:text-white"
+                                )}
+                            >
+                                <item.icon className={cn("h-5 w-5", isActive ? "text-red-primary" : "text-secondary-white")} />
+                                <span className="text-18 font-medium">{item.label}</span>
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 <div className="h-px w-full bg-border" />
