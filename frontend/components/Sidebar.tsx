@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
@@ -56,6 +57,12 @@ const bottomItems: MenuItem[] = [
 ];
 
 export function Sidebar() {
+    const [currentPath, setCurrentPath] = useState("/");
+
+    // Function to handle navigation
+    const handleNavigation = (href: string) => {
+        setCurrentPath(href);
+    };
     return (
         <div className="flex h-screen w-[280px] flex-col bg-surface-card text-white border-r border-border p-6 fixed left-0 top-0">
             {/* Logo */}
