@@ -89,7 +89,7 @@ export default async function EventPage({ params }: EventPageProps) {
       <section className="space-y-4">
         <h3 className="text-24 font-medium text-main-white">About the Venue</h3>
         {event.real_event_photo_url && (
-          <div className="mt-6 relative h-[400px] w-full rounded-2xl overflow-hidden border border-slate-800">
+          <div className="mt-6 relative h-[400px] p-[3.2rem] w-full rounded-2xl overflow-hidden border border-slate-800">
              <Image 
                src={event.real_event_photo_url} 
                alt={`${event.stadium_name} view`}
@@ -97,6 +97,11 @@ export default async function EventPage({ params }: EventPageProps) {
                className="object-cover hover:scale-105 transition-transform duration-700 "
                priority
              />
+             <div>
+
+             <h4>{event.stadium_name}</h4>
+             <p>{event.stadium_description}</p>
+             </div>
              
              <div className="absolute inset-0 bg-gradient-to-b from-black-base/80 to-black-base/35 pointer-events-none" />
           </div>
