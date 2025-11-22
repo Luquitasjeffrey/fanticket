@@ -23,23 +23,24 @@ const MOCK_EVENT = {
 export default async function EventPage({ params }: EventPageProps) {
   const { id } = await params
   
-  const event = MOCK_EVENT
+//   const event = MOCK_EVENT
 
-  // Supabase
-  /*
+
+//  Supabase 
   const supabase = await createClient()
 
   // Fetch event details including the seats.io key and min stake
   const { data: event, error: eventError } = await supabase
     .from('events')
-    .select('*, seatsio_event_key, min_stake_required')
+    .select('*')
     .eq('id', id)
     .single()
 
-  if (eventError || !event) {
-    notFound()
-  }
-  */
+    if (eventError || !event) {
+        console.error("Supabase Error:", eventError);
+        notFound();
+      }
+  
 
 // Date format
   const { usDate, time, weekday } = formatDateHelper(event.event_date);

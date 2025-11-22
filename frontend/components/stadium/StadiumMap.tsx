@@ -82,7 +82,7 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
         <SeatsioSeatingChart
           workspaceKey={process.env.NEXT_PUBLIC_SEATS_IO_KEY!}
           event={eventKey}
-          region="eu"
+          region="na"
           language="es"
           pricing={pricingConfig}
           onObjectSelected={handleSeatSelected}
