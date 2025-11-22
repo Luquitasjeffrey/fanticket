@@ -10,7 +10,7 @@ export const PROJECT_ID = '9a4bc6797a2a24b87ee07c4090024bab';
 export const config = createConfig({
   chains: [network],
   transports: {
-    [network.id]: http()
+    [network.id]: http("http://127.0.0.1:8545")
   },
   connectors: [
     injected(), // metamask, brave, etc
@@ -19,7 +19,7 @@ export const config = createConfig({
 });
 
 export const FAN_TICKET_ADDRESS: Address =
-  "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512"; // poné tu contrato
+  "0xe6e340d132b5f46d1e472debcd681b2abc16e57e"; // poné tu contrato
 
 export async function getConnectedWallet() {
   let acc = getAccount(config);
@@ -55,6 +55,10 @@ export async function getConnectedWallet() {
   if (!wallet) {
     throw new Error("Error al obtener wallet client conectado.");
   }
+
+  wallet.addChain({
+    chain: network
+  });
 
   return wallet;
 }
