@@ -34,6 +34,19 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
     { category: 2, price: 100 }   
   ];
 
+  async function getMatchIdAndReservationId() {
+    const eventId = getEventId();
+    const seatsioId = selectedSeat.id;
+    const response = await fetch(`/api/${eventId}/${seatsioId}/contractinfo`);
+    const contractData = await response.json();
+    const matchId = BigInt(contractData.matchId);
+    const reservationId = BigInt(contractData.reservationId);
+    return {
+      matchId,
+      reservationId
+    };
+  }
+
   // Select a Seat and Modal open
   const handleSeatSelected = (object: unknown) => {
     const seat = object as SeatsioObject;
