@@ -59,10 +59,10 @@ export function Sidebar() {
     return (
         <div className="flex h-screen w-[280px] flex-col bg-surface-card text-white border-r border-border p-6 fixed left-0 top-0">
             {/* Logo */}
-            <div className="mb-10 flex items-end justify-center gap-2 px-2">
+            <Link href="/" className="mb-10 flex items-end justify-center gap-2 px-2 hover:cursor-pointer">
                 <Image src={logoFanticket} alt="logo fanticket" width={48} height={48} />
                 <h1 className="text-32 font-semibold text-main-white tracking-tight">Fan<span className="text-red-primary">Ticket</span></h1>
-            </div>
+            </Link>
 
             {/* Navigation */}
             <div className="flex-1 overflow-y-auto scrollbar-hide space-y-8">

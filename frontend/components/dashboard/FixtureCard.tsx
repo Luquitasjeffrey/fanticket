@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link"
 
 interface FixtureCardProps {
+    id: string;
     date: { day: string; month: string; year: string };
     homeTeam: { name: string; logo: string };
     awayTeam: { name: string; logo: string };
@@ -13,7 +15,7 @@ interface FixtureCardProps {
     price: string;
 }
 
-export function FixtureCard({ date, homeTeam, awayTeam, time, venue, price }: FixtureCardProps) {
+export function FixtureCard({ id, date, homeTeam, awayTeam, time, venue, price }: FixtureCardProps) {
     return (
         <Card className="bg-surface-card border-border overflow-hidden group hover:border-red-primary/50 transition-all duration-300">
             <CardContent className="p-0 flex flex-col md:flex-row items-center h-full">
@@ -46,8 +48,10 @@ export function FixtureCard({ date, homeTeam, awayTeam, time, venue, price }: Fi
                     {/* Action */}
                     <div className="flex flex-col items-center md:items-end gap-2 min-w-[120px]">
                         <span className="text-xs text-text-secondary">From <span className="text-white font-bold">${price}</span></span>
-                        <Button className="bg-red-primary hover:bg-red-hover text-white font-semibold rounded-xl h-9 px-6 shadow-[0_4px_20px_-2px_rgba(230,57,70,0.25)]">
+                        <Button asChild className="bg-red-primary hover:bg-red-hover rounded-xl h-9 px-6 shadow-[0_4px_20px_-2px_rgba(230,57,70,0.25)]">
+                            <Link href={`/events/${id}`} className="text-white font-semibold  text-18">
                             Reserve Seat
+                            </Link>
                         </Button>
                     </div>
                 </div>

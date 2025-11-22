@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto.variable} antialiased`}
       >
-        {children}
+        <Sidebar />
+        <main className="pl-[28rem] w-full min-h-screen">
+            {children}
+        </main>
       </body>
     </html>
   );

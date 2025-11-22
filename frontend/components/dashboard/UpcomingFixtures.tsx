@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const fixtures = [
     {
-        id: 1,
+        id: "123",
         date: { day: "26", month: "NOV", year: "2025" },
         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
@@ -14,7 +14,7 @@ const fixtures = [
         price: "85"
     },
     {
-        id: 2,
+        id: "456",
         date: { day: "26", month: "NOV", year: "2025" },
         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
@@ -23,7 +23,7 @@ const fixtures = [
         price: "85"
     },
     {
-        id: 3,
+        id: "789",
         date: { day: "26", month: "NOV", year: "2025" },
         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
@@ -32,7 +32,7 @@ const fixtures = [
         price: "85"
     },
     {
-        id: 4,
+        id: "101112",
         date: { day: "26", month: "NOV", year: "2025" },
         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
@@ -65,7 +65,7 @@ export function UpcomingFixtures() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {fixtures.map((fixture) => (
-                    <FixtureCard key={fixture.id} {...fixture} />
+                    <FixtureCard id={fixture.id} key={fixture.id} date={fixture.date} homeTeam={fixture.homeTeam} awayTeam={fixture.awayTeam} time={fixture.time} venue={fixture.venue} price={fixture.price} />
                 ))}
             </div>
         </div>
