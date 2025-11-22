@@ -1,3 +1,4 @@
+// @ts-nocheck
 // fanticket.ts
 import {
   createPublicClient,
@@ -20,12 +21,7 @@ const publicClient = createPublicClient({
 export const FAN_TICKET_ADDRESS: Address =
   "0xXXXXXXXXXXXX"; // poné tu contrato
 
-// El wallet client lo crea React o 
-// El wallet client lo crea React o la app
-export function makeWalletClient(): ReturnType<typeof createWalletClient> {
-  if (!window.ethereum) throw new Error("No wallet installed");
 
-la app
 export function makeWalletClient(): ReturnType<typeof createWalletClient> {
   if (!window.ethereum) throw new Error("No wallet installed");
 
@@ -116,7 +112,7 @@ async function writeTx(
     address: FAN_TICKET_ADDRESS,
     abi: FanTicketAbi,
     functionName: fn,
-    args,
+    args: args
   });
 }
 

@@ -36,7 +36,7 @@ contract FanTicket is Ownable {
     event ReservationExpired(uint256 matchId, uint256 reservationId);
     event ReservationConfirmed(uint256 matchId, uint256 reservationId);
 
-    uint256 public nextMatchId;
+    uint256 public nextMatchId = 1;
     mapping(uint256 => MatchData) public matchs;
 
     // user → array de (matchId,reservationId) packed
@@ -49,7 +49,7 @@ contract FanTicket is Ownable {
     }
 
     // --- Match creation ---
-    function createMatch(address fanToken, uint256 numReservations, uint256 requiredStake, uint256 reservationDeadline, uint256 reservationDuration) external onlyOwner returns (uint) {
+    function createMatch(address fanToken, uint256 numReservations, uint256 requiredStake, uint256 reservationDeadline, uint256 reservationDuration) external onlyOwner {
         require(numReservations > 0, "numReservations must > 0");
 
         uint256 matchId = nextMatchId;
@@ -74,10 +74,9 @@ contract FanTicket is Ownable {
         nextMatchId++;
 
         emit MatchCreated(matchId);
-        return matchId;
     }
 
-    // --- Reserve a reservation ---
+    // --- Reserve a seat for the match ---
     function reserve(uint256 matchId, uint256 reservationId) external {
         MatchData storage ev = matchs[matchId];
         require(!ev.finished, "match finished");
