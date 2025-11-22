@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import logoFanticket from "@/public/icons/fanticket-logo.svg"
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 interface MenuItem {
     icon: LucideIcon;
@@ -125,16 +126,8 @@ export function Sidebar() {
 
                 <div className="h-px w-full bg-border" />
 
-                {/* User Profile or Wallet */}
-                {/* <div className="flex items-center gap-3 px-2">
-                    <Avatar className="h-10 w-10 border border-border">
-                        <AvatarImage src="/avatar.png" alt="Alex Johnson" />
-                        <AvatarFallback>AJ</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-white">Alex Johnson</span>
-                    </div>
-                </div> */}
+                {/* Rainbowkit Wallet Connect button*/}
+                <ConnectButton />
             </div>
         </div>
     );

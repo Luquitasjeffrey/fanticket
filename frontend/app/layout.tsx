@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
-import { GlobalExpose } from "./providers";
+import { Providers } from './providers';
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
@@ -49,11 +49,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto.variable} antialiased`}
       >
-        <GlobalExpose />
+        <Providers>
         <Sidebar />
         <main className="pl-[28rem] w-full min-h-screen">
             {children}
         </main>
+        </Providers>
       </body>
     </html>
   );
