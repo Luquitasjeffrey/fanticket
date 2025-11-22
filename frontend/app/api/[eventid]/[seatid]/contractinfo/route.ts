@@ -67,6 +67,8 @@ export async function GET(
   			.select('*', { count: 'exact' }) // trae todas las columnas
   			.eq('match_id', eventid);
 			
+			reservationId = response.count;
+			
 			const { data: insertedRow, error: insertError } = await supabase
   			.from('seatsio_seat_id_to_contract_reservation_id')
   			.insert([
@@ -78,7 +80,6 @@ export async function GET(
 			  ]);
 
 			console.log("COUNT: " + response.count);
-			reservationId = response.count;
     }
 		else {
 			reservationId = row.contract_reservation_id;
