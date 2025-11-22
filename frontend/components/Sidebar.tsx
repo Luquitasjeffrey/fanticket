@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
+import logoFanticket from "@/public/icons/fanticket-logo.svg"
 
 interface MenuItem {
     icon: LucideIcon;
@@ -34,8 +36,8 @@ const menuItems: MenuSection[] = [
         title: "MAIN MENU",
         items: [
             { icon: LayoutDashboard, label: "Dashboard", href: "/", active: true },
-            { icon: Compass, label: "Discover Matches", href: "/discover" },
-            { icon: Ticket, label: "Season Passes", href: "/season-passes" },
+            // { icon: Compass, label: "Discover Matches", href: "/discover" },
+            // { icon: Ticket, label: "Season Passes", href: "/season-passes" },
         ]
     },
     {
@@ -57,8 +59,9 @@ export function Sidebar() {
     return (
         <div className="flex h-screen w-[280px] flex-col bg-surface-card text-white border-r border-border p-6 fixed left-0 top-0">
             {/* Logo */}
-            <div className="mb-10 flex items-center gap-2 px-2">
-                <h1 className="text-3xl font-bold text-red-primary tracking-tight">FanTicket</h1>
+            <div className="mb-10 flex items-end justify-center gap-2 px-2">
+                <Image src={logoFanticket} alt="logo fanticket" width={48} height={48} />
+                <h1 className="text-32 font-semibold text-main-white tracking-tight">Fan<span className="text-red-primary">Ticket</span></h1>
             </div>
 
             {/* Navigation */}
@@ -66,7 +69,7 @@ export function Sidebar() {
                 {menuItems.map((section, idx) => (
                     <div key={idx}>
                         {section.title && (
-                            <h3 className="mb-4 px-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                            <h3 className="mb-4 px-4 text-14 font-semibold text-secondary-white/65 uppercase tracking-wider">
                                 {section.title}
                             </h3>
                         )}
@@ -76,18 +79,18 @@ export function Sidebar() {
                                     key={item.label}
                                     href={item.href}
                                     className={cn(
-                                        "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                                        "flex items-center justify-between rounded-xl px-4 py-3 text-18 font-medium transition-colors",
                                         item.active
                                             ? "bg-red-primary/10 text-red-primary"
-                                            : "text-text-secondary hover:bg-elevate hover:text-white"
+                                            : "text-secondary-white hover:bg-elevate hover:text-white"
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <item.icon className={cn("h-5 w-5", item.active ? "text-red-primary" : "text-text-secondary")} />
-                                        <span>{item.label}</span>
+                                        <item.icon className={cn("h-5 w-5", item.active ? "text-red-primary" : "text-secondary-white")} />
+                                        <span className="text-18 font-medium">{item.label}</span>
                                     </div>
                                     {item.badge && (
-                                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-primary text-[10px] font-bold text-white">
+                                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-primary text-10 font-bold text-main-white">
                                             {item.badge}
                                         </span>
                                     )}
@@ -105,7 +108,7 @@ export function Sidebar() {
                         <Link
                             key={item.label}
                             href={item.href}
-                            className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-text-secondary transition-colors hover:bg-elevate hover:text-white"
+                            className="flex items-center gap-3 rounded-xl px-4 py-3 text-18 font-medium text-secondary-white transition-colors hover:bg-elevate hover:text-white"
                         >
                             <item.icon className="h-5 w-5" />
                             <span>{item.label}</span>
@@ -115,8 +118,8 @@ export function Sidebar() {
 
                 <div className="h-px w-full bg-border" />
 
-                {/* User Profile */}
-                <div className="flex items-center gap-3 px-2">
+                {/* User Profile or Wallet */}
+                {/* <div className="flex items-center gap-3 px-2">
                     <Avatar className="h-10 w-10 border border-border">
                         <AvatarImage src="/avatar.png" alt="Alex Johnson" />
                         <AvatarFallback>AJ</AvatarFallback>
@@ -124,7 +127,7 @@ export function Sidebar() {
                     <div className="flex flex-col">
                         <span className="text-sm font-semibold text-white">Alex Johnson</span>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

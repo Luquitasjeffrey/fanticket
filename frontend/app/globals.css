@@ -250,7 +250,8 @@ body {
   /* Inputs, search bar, hover states */
   --color-border: #2E2E2E;
   /* Subtle borders, dividers */
-  --color-text-secondary: #AFAFAF;
+  --color-main-white: #FAFAFA;
+  --color-secondary-white: #AFAFAF;
   /* Subtitles, inactive text */
 
   /* The FanTicket Crimson Palette */
