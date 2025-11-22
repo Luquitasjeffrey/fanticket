@@ -31,6 +31,7 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
     const seat = object as SeatsioObject;
     setSelectedSeat(seat);
     setIsModalOpen(true);
+    console.log(seat);
   };
 
 //   Deselect the seat
@@ -48,7 +49,8 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
     try {
       // --- AQUÍ VA TU LÓGICA DE BACKEND ---
       // 1. Llamada a Supabase para crear la reserva
-      // 2. Llamada a la Wallet para firmar la transacción
+      // 2. Llamada a la Wallet para firmar la transacción      alert('S')
+      console.log(selectedSeat.labels.own);
       console.log("Staking your tokens", minStake, "CHZ for this spot", selectedSeat.labels.own);
       
       // Wait process simulation (erase when api is connected)
