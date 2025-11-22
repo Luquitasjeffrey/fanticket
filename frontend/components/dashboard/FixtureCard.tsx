@@ -12,7 +12,7 @@ interface FixtureCardProps {
     awayTeam: { name: string; logo: string };
     time: string;
     venue: string;
-    price: string;
+    price: string | number;
 }
 
 export function FixtureCard({ id, date, homeTeam, awayTeam, time, venue, price }: FixtureCardProps) {
