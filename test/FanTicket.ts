@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { network } from "hardhat";
+import { createMatchAndGetId } from "../lib/fanticket.js";
 
 describe("FanTicket", async function () {
   const { viem } = await network.connect();
@@ -14,11 +15,22 @@ describe("FanTicket", async function () {
 
     const reservationDeadline = BigInt(Math.round(7 * 60 * 60 * 24 + Date.now()/1000)); //1 week
     const duration = BigInt(Math.round(60 * 60 + Date.now()/1000)); // 1 hour
-    const numSeats = 10n;
+    const numReservations = 10n;
     const minStake = 100n;
 
-    //uint256 numReservations, uint256 requiredStake, uint256 reservationDeadline, uint256 reservationDuration
-    const matchId = await fanTicket.write.createMatch([fanToken.address, numSeats, minStake, reservationDeadline, duration]);
-    console.log('MatchId: ' + matchId);
+		const matchId = await createMatchAndGetId({
+			fanTicket,
+			fanToken,
+			requiredStake: minStake,
+			reservationDeadline,
+			reservationDuration: duration,
+			numReservations,
+			publicClient
+		});
+
+		console.log('MatchId: ' + matchId);
+    console.log('FanTicket address: ' + fanTicket.address);
+    console.log('owner: ' + await fanTicket.read.owner());
+		assert.ok(matchId, 'Match id should be truthy and should be not 0');
   });
 });
