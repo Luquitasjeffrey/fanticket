@@ -1,7 +1,7 @@
-import { injected, walletConnect } from "@wagmi/connectors";
-import { hardhat} from "viem/chains";
+import { injected, walletConnect } from "wagmi/connectors";
+import { hardhat} from "wagmi/chains";
 import {type Address} from "viem";
-import { createConfig, http, getAccount, getWalletClient, connect } from "@wagmi/core";
+import { createConfig, http, getAccount, getWalletClient, connect } from "wagmi";
 
 export const network = hardhat;
 
@@ -16,6 +16,7 @@ export const config = createConfig({
     injected(), // metamask, brave, etc
     walletConnect({ projectId: PROJECT_ID, showQrModal: true }),
   ],
+  ssr: true,
 });
 
 export const FAN_TICKET_ADDRESS: Address =
