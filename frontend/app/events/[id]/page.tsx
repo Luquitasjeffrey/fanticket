@@ -54,12 +54,12 @@ export default async function EventPage({ params }: EventPageProps) {
           <h1 className="h1-small text-main-white max-w-[101rem]">{event.title}</h1>
           <div className="flex items-center gap-2 text-secondary-white paragraph-18-medium">
              <span>🏟️</span>
-             <p>Stadium: {event.stadium_name}</p>
+             <p >Stadium: <span className="text-main-white">{event.stadium_name}</span></p>
           </div>
         </div>
 
         <div className='flex flex-col gap-2 text-right'>
-          <p className="text-secondary-white paragraph-18-medium capitalize">
+          <p className="text-main-white paragraph-18-medium capitalize">
              📅 {weekday}, {usDate}
           </p>
           <p className="text-secondary-white paragraph-18-medium">
@@ -87,18 +87,18 @@ export default async function EventPage({ params }: EventPageProps) {
 
       {/* Section: Real Stadium Visual */}
       <section className="space-y-4">
-        <h3 className="text-xl font-medium text-secondary-white">About the Venue</h3>
+        <h3 className="text-24 font-medium text-main-white">About the Venue</h3>
         {event.real_event_photo_url && (
           <div className="mt-6 relative h-[400px] w-full rounded-2xl overflow-hidden border border-slate-800">
              <Image 
                src={event.real_event_photo_url} 
                alt={`${event.stadium_name} view`}
                fill
-               className="object-cover hover:scale-105 transition-transform duration-700"
+               className="object-cover hover:scale-105 transition-transform duration-700 "
                priority
              />
              
-             <div className="absolute inset-0 bg-gradient-to-t from-black-base/80 to-transparent pointer-events-none" />
+             <div className="absolute inset-0 bg-gradient-to-b from-black-base/80 to-black-base/35 pointer-events-none" />
           </div>
         )}
       </section>
