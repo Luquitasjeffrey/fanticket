@@ -31,9 +31,7 @@ body {
   overflow-x: hidden;
 }
 
-@utility container-wrapper {
-  @apply 3xl:px-[clamp(6.4rem,40vw)] w-full min-w-full px-[clamp(6.4rem,33.3vw)];
-}
+
 @utility px-mobile {
   @apply px-[2.4rem];
 }
@@ -167,29 +165,52 @@ body {
   --leading-150: 150%;
 
   /* spacing variables (1rem = 10px with html { font-size: 62.5% }) */
-  --spacing-2: 0.8rem; /*  8px */
-  --spacing-3: 1.2rem; /* 12px */
-  --spacing-4: 1.6rem; /* 16px */
-  --spacing-5: 2rem; /* 20px */
-  --spacing-6: 2.4rem; /* 24px */
-  --spacing-7: 2.8rem; /* 28px */
-  --spacing-8: 3.2rem; /* 32px */
-  --spacing-9: 3.6rem; /* 36px */
-  --spacing-10: 4rem; /* 40px */
-  --spacing-11: 4.4rem; /* 44px */
-  --spacing-12: 4.8rem; /* 48px */
-  --spacing-13: 5.2rem; /* 52px */
-  --spacing-14: 5.6rem; /* 56px */
-  --spacing-15: 6rem; /* 60px */
-  --spacing-16: 6.4rem; /* 64px */
-  --spacing-17: 6.8rem; /* 68px */
-  --spacing-18: 7.2rem; /* 72px */
-  --spacing-19: 7.6rem; /* 76px */
-  --spacing-20: 8rem; /* 80px */
-  --spacing-21: 8.4rem; /* 84px */
-  --spacing-22: 8.8rem; /* 88px */
-  --spacing-23: 9.2rem; /* 92px */
-  --spacing-24: 9.6rem; /* 96px */
+  --spacing-2: 0.8rem;
+  /*  8px */
+  --spacing-3: 1.2rem;
+  /* 12px */
+  --spacing-4: 1.6rem;
+  /* 16px */
+  --spacing-5: 2rem;
+  /* 20px */
+  --spacing-6: 2.4rem;
+  /* 24px */
+  --spacing-7: 2.8rem;
+  /* 28px */
+  --spacing-8: 3.2rem;
+  /* 32px */
+  --spacing-9: 3.6rem;
+  /* 36px */
+  --spacing-10: 4rem;
+  /* 40px */
+  --spacing-11: 4.4rem;
+  /* 44px */
+  --spacing-12: 4.8rem;
+  /* 48px */
+  --spacing-13: 5.2rem;
+  /* 52px */
+  --spacing-14: 5.6rem;
+  /* 56px */
+  --spacing-15: 6rem;
+  /* 60px */
+  --spacing-16: 6.4rem;
+  /* 64px */
+  --spacing-17: 6.8rem;
+  /* 68px */
+  --spacing-18: 7.2rem;
+  /* 72px */
+  --spacing-19: 7.6rem;
+  /* 76px */
+  --spacing-20: 8rem;
+  /* 80px */
+  --spacing-21: 8.4rem;
+  /* 84px */
+  --spacing-22: 8.8rem;
+  /* 88px */
+  --spacing-23: 9.2rem;
+  /* 92px */
+  --spacing-24: 9.6rem;
+  /* 96px */
 
   /* Letter Spacing */
   --tracking-xs: -0.027rem;
@@ -201,40 +222,55 @@ body {
   --tracking-2xl: -0.171rem;
 
   /* Font Sizes */
-  --text-10: 1rem; /* 10px */
-  --text-14: 1.4rem; /* 14px */
-  --text-18: 1.8rem; /* 18px */
-  --text-24: 2.4rem; /* 24px */
-  --text-32: 3.2rem; /* 32px */
-  --text-43: 4.3rem; /* 43px */
-  --text-57: 5.7rem; /* 57px */
-  --text-96: 9.6rem; /* 96px */
-  --text-101: 10.1rem; /* 101px */
+  --text-10: 1rem;
+  /* 10px */
+  --text-14: 1.4rem;
+  /* 14px */
+  --text-18: 1.8rem;
+  /* 18px */
+  --text-24: 2.4rem;
+  /* 24px */
+  --text-32: 3.2rem;
+  /* 32px */
+  --text-43: 4.3rem;
+  /* 43px */
+  --text-57: 5.7rem;
+  /* 57px */
+  --text-96: 9.6rem;
+  /* 96px */
+  --text-101: 10.1rem;
+  /* 101px */
 
   /* color */
-  --color-main-red: #FF1256;
-  --color-bg-black: #0B1118;
-  --color-purple: #311658;
-  --color-cool-white: #FAFAFA;
-  --color-light-purple: #D088FF;
-  --color-bright-red: #C4003B;
-  --color-electric-blue: #4A00E0;
+  --color-black-base: #0A0A0A;
+  /* Main background */
+  --color-surface-card: #141414;
+  /* Card & sidebar background */
+  --color-elevate: #1F1F1F;
+  /* Inputs, search bar, hover states */
+  --color-border: #2E2E2E;
+  /* Subtle borders, dividers */
+  --color-text-secondary: #AFAFAF;
+  /* Subtitles, inactive text */
+
+  /* The FanTicket Crimson Palette */
+  --color-red-primary: #E63946;
+  /* Main buttons, notifications */
+  --color-red-hover: #C92532;
+  /* Button hover state */
+  --color-red-glow: #420D12;
+  /* Subtle background glows */
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
-  --shadow-carouselCard:
-    16px 19px 7px 0 rgba(0, 0, 0, 0.01), 10px 12px 6px 0 rgba(0, 0, 0, 0.05), 6px 7px 5px 0 rgba(0, 0, 0, 0.18),
-    3px 3px 4px 0 rgba(0, 0, 0, 0.3), 1px 1px 2px 0 rgba(0, 0, 0, 0.34);
-
-  --shadow-floatingText:
-    42px 42px 17px 0 rgba(0, 0, 0, 0.01), 27px 27px 15px 0 rgba(0, 0, 0, 0.04), 15px 15px 13px 0 rgba(0, 0, 0, 0.15),
-    7px 7px 9px 0 rgba(0, 0, 0, 0.26), 2px 2px 5px 0 rgba(0, 0, 0, 0.29);
+  --shadow-redGlow: 0 4px 20px -2px rgba(230, 57, 70, 0.25);
 
   @keyframes accordion-down {
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
@@ -244,6 +280,7 @@ body {
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
     }
@@ -252,12 +289,15 @@ body {
 
 /* Hide scrollbars while keeping functionality */
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 *,
@@ -440,6 +480,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
