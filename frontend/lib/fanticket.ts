@@ -182,14 +182,6 @@ export async function cancelIfExpired(
   return await writeTx(walletClient, "cancelIfExpired", [matchId, reservationId]);
 }
 
-export async function markPaid(
-  walletClient: ReturnType<typeof getConnectedWallet>,
-  matchId: bigint,
-  reservationId: bigint
-) {
-  return await writeTx(walletClient, "markPaid", [matchId, reservationId]);
-}
-
 export async function finishMatch(
   walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint
