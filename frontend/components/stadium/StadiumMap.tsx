@@ -1,7 +1,10 @@
+// @ts-nocheck
 'use client'
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import { useState, useRef } from 'react';
 import { X } from 'lucide-react';
+import { reserve } from '@/lib/fanticket';
+import { getConnectedWallet } from '@/lib/walletconfig';
 
 interface SeatsioObject {
   id?: string;
@@ -14,6 +17,11 @@ interface SeatsioObject {
 interface StadiumMapProps {
   eventKey: string;
   minStake: number;
+}
+
+function getEventId() {
+  const parts = window.location.href.split('/');
+  return parts[parts.length - 1];
 }
 
 export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
@@ -50,11 +58,17 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
       // --- AQUÍ VA TU LÓGICA DE BACKEND ---
       // 1. Llamada a Supabase para crear la reserva
       // 2. Llamada a la Wallet para firmar la transacción      alert('S')
-      console.log(selectedSeat.labels.own);
+      const eventId = getEventId();
+      const seatsioId = selectedSeat.id;
+      const response = await fetch(`/api/${eventId}/${seatsioId}/contractinfo`);
+      const contractData = await response.json();
+      const matchId = BigInt(contractData.matchId);
+      const reservationId = BigInt(contractData.reservationId)
+      const walletClient = await getConnectedWallet();
+      await reserve(walletClient, matchId, reservationId);
+
       console.log("Staking your tokens", minStake, "CHZ for this spot", selectedSeat.labels.own);
       
-      // Wait process simulation (erase when api is connected)
-      await new Promise(resolve => setTimeout(resolve, 2000));
 
       alert(`Congratulations! Your stake was sucessful: The ${selectedSeat.labels.own} seat is reserved!`);
       setIsModalOpen(false);

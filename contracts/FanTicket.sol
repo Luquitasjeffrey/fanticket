@@ -115,6 +115,7 @@ contract FanTicket is Ownable {
         emit ReservationExpired(matchId, reservationId);
     }
 
+    // TODO: Penalizar cancelacion
     // --- Cancel reservation before payment ---
     function cancel(uint256 matchId, uint256 reservationId) external {
         MatchData storage ev = matchs[matchId];
@@ -162,6 +163,18 @@ contract FanTicket is Ownable {
 
         userStakeForMatch[msg.sender][matchId] = 0;
         ev.fanToken.transfer(msg.sender, amount);
+    }
+
+    // Anyone can call this function, when it is called the stake is returned to the user
+    function withdrawStakeOf(address user, uint256 matchId) external {
+        MatchData storage ev = matchs[matchId];
+        require(ev.finished, "match not finished");
+
+        uint256 amount = userStakeForMatch[user][matchId];
+        require(amount > 0, "nothing to withdraw");
+
+        userStakeForMatch[user][matchId] = 0;
+        ev.fanToken.transfer(user, amount);
     }
 
     // --- View Helpers ---
