@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
+import { GlobalExpose } from "./providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto.variable} antialiased`}
       >
+        <GlobalExpose />
         <Sidebar />
         <main className="pl-[28rem] w-full min-h-screen">
             {children}

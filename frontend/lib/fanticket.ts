@@ -2,34 +2,16 @@
 // fanticket.ts
 import {
   createPublicClient,
-  createWalletClient,
   custom,
-  http,
-  type Address,
+  http
 } from "viem";
-import { hardhat } from "viem/chains";
 
-const networj = hardhat;
+import {config, network, getConnectedWallet, FAN_TICKET_ADDRESS} from "@/lib/walletconfig";
 
-const publicClient = createPublicClient({
-  chain: hardhat,
+export const publicClient = createPublicClient({
+  chain: network,
   transport: http("http://127.0.0.1:8545")  // RPC local
 });
-// ===============================
-// CONFIG
-// ===============================
-export const FAN_TICKET_ADDRESS: Address =
-  "0xXXXXXXXXXXXX"; // poné tu contrato
-
-
-export function makeWalletClient(): ReturnType<typeof createWalletClient> {
-  if (!window.ethereum) throw new Error("No wallet installed");
-
-  return createWalletClient({
-    chain: sepolia,
-    transport: custom(window.ethereum),
-  });
-}
 
 // ===============================
 // TYPES
@@ -101,7 +83,7 @@ export async function myReservations(user: Address): Promise<bigint[]> {
 // WRITE FUNCTIONS
 // ===============================
 async function writeTx(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   fn: string,
   args: any[]
 ) {
@@ -117,7 +99,7 @@ async function writeTx(
 }
 
 export async function createMatch(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   token: Address,
   num: bigint,
   stake: bigint,
@@ -134,7 +116,7 @@ export async function createMatch(
 }
 
 export async function reserve(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint,
   reservationId: bigint
 ) {
@@ -142,7 +124,7 @@ export async function reserve(
 }
 
 export async function cancel(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint,
   reservationId: bigint
 ) {
@@ -150,7 +132,7 @@ export async function cancel(
 }
 
 export async function cancelIfExpired(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint,
   reservationId: bigint
 ) {
@@ -158,7 +140,7 @@ export async function cancelIfExpired(
 }
 
 export async function markPaid(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint,
   reservationId: bigint
 ) {
@@ -166,14 +148,14 @@ export async function markPaid(
 }
 
 export async function finishMatch(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint
 ) {
   return await writeTx(walletClient, "finishMatch", [matchId]);
 }
 
 export async function withdrawStake(
-  walletClient: ReturnType<typeof createWalletClient>,
+  walletClient: ReturnType<typeof getConnectedWallet>,
   matchId: bigint
 ) {
   return await writeTx(walletClient, "withdrawStake", [matchId]);
@@ -195,7 +177,7 @@ export function unpackReservation(packed: bigint) {
 // CHECK IF CURRENT USER IS OWNER
 // ===============================
 export async function isOwner(
-  walletClient: ReturnType<typeof createWalletClient>
+  walletClient: ReturnType<typeof getConnectedWallet>
 ): Promise<boolean> {
   const [user] = await walletClient.getAddresses();
   const owner = await getOwner();
