@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import logoFanticket from "@/public/icons/fanticket-logo.svg"
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {CustomWalletButton} from '@/components/rainbowkit-button/CustomWalletButton';
 
 interface MenuItem {
     icon: LucideIcon;
@@ -127,7 +127,7 @@ export function Sidebar() {
                 <div className="h-px w-full bg-border" />
 
                 {/* Rainbowkit Wallet Connect button*/}
-                <ConnectButton />
+                <CustomWalletButton />
             </div>
         </div>
     );
