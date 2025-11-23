@@ -13,12 +13,12 @@ export function CountdownCard() {
                     Next Match Countdown
                 </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-2">
                 <div className="flex items-center justify-between w-full h-fit">
                     <div className="flex flex-col items-center justify-center gap-[1.2rem] w-fit h-auto">
                         <div className="w-full flex-center">
 
-                            <Image src="/images/barca-logo.png" alt="FC Barcelona" width={32} height={32} className="h-8 w-8 object-contain" />
+                            <Image src="/images/barca-logo.png" alt="FC Barcelona" width={44} height={44} className="size-[4.4rem] object-contain" />
                         </div>
                         <span className="paragraph-18-medium text-main-white">FC Barcelona</span>
                     </div>
@@ -26,7 +26,7 @@ export function CountdownCard() {
                     <div className="flex flex-col items-center justify-cente gap-3 w-fit h-auto">
                         <div className="w-full flex-center">
 
-                            <Image src="/images/atm-logo.png" alt="Atlético de Madrid" width={32} height={32} className="h-8 w-8 object-contain" />
+                            <Image src="/images/atm-logo.png" alt="Atlético de Madrid" width={44} height={44} className="size-[4.4rem] object-contain" />
                         </div>
                         <span className="paragraph-18-medium text-main-white">Atlético de Madrid</span>
                     </div>
@@ -54,7 +54,7 @@ export function CountdownCard() {
                     </div>
                 </div>
 
-                <Button className="w-full bg-red-primary hover:bg-red-hover text-main-white border-[0.5px] border-solid border-secondary-white paragraph-24-semibold rounded-lg py-[0.8rem] hover:cursor-pointer shadow-[0_4px_20px_-2px_rgba(230,57,70,0.25)]">
+                <Button className="w-full bg-red-primary hover:bg-red-hover text-main-white border-[0.5px] border-solid border-secondary-white paragraph-24-semibold rounded-lg py-[8px] hover:cursor-pointer shadow-[0_4px_20px_-2px_rgba(230,57,70,0.25)]">
                     View Ticket
                 </Button>
             </CardContent>

@@ -1,6 +1,5 @@
 import { MatchdayOverview } from "@/components/dashboard/MatchdayOverview";
 import  {UpcomingFixtures}  from "@/components/dashboard/UpcomingFixtures";
-import { TopBar } from "@/components/TopBar";
 import { createClient } from '@/utils/supabase/server';
 import { formatDateHelper } from '@/utils/date';
 
@@ -24,7 +23,7 @@ export default async function Dashboard() {
     return {
       id: event.id,
       date: { day, month, year },
-      time,
+      time: time,
       venue: event.stadium_id ? "Spotify Camp Nou" : "TBC",
       price: event.min_stake_required,
       homeTeam: { name: homeName, logo: "/images/barca-logo.png" }, // Placeholder
@@ -34,13 +33,10 @@ export default async function Dashboard() {
 
   return (
     <div className="min-h-screen bg-black-base font-inter">
-        <div className="container-wrapper py-6 space-y-12 px-[6.4rem]">
-          <TopBar />
           <div className="flex-start-col gap-14">
             <MatchdayOverview />
             <UpcomingFixtures fixtures={formattedFixtures}/>
           </div>
-        </div>
     </div>
   );
 }

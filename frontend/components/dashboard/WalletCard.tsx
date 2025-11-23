@@ -42,9 +42,8 @@ const chartConfig = {
 export function WalletCard() {
   return (
     <Card className="bg-surface-card border-border relative overflow-hidden shadow-md">
-      <div className="absolute right-0 bottom-0 h-32 w-32 bg-gradient-to-tl from-red-primary/10 to-transparent blur-2xl pointer-events-none" />
 
-      <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+      <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="paragraph-18-semibold text-secondary-white uppercase tracking-wider">
           Fan Wallet
         </CardTitle>
@@ -52,17 +51,17 @@ export function WalletCard() {
       </CardHeader>
 
       <CardContent>
-        <div className="mb-4">
-          <div className="subtitle-semibold text-main-white">
+        <div className="">
+          <div className="h2-medium text-main-white">
             $250.00
           </div>
-          <div className="paragraph-18-medium text-secondary-white  opacity-80">
+          <div className="paragraph-18-medium text-secondary-white  opacity-80 mt-[0.4rem]">
             Available
           </div>
         </div>
 
         {/* Line graph */}
-        <div className="h-[13.6rem] w-full -ml-2">
+        <div className="h-[11.8rem] w-full -ml-2">
           <ChartContainer config={chartConfig} className="h-full w-full">
             <AreaChart
               data={data}

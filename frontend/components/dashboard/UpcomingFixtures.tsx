@@ -15,9 +15,9 @@ const filters = ["All Matches", "La Liga", "Champions League", "Near Me"];
 export function UpcomingFixtures({ fixtures }: UpcomingFixturesProps) {
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 w-full">
         {/* Header y Filtros */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 w-full">
           <h2 className="subtitle-semibold text-main-white">
             Upcoming Fixtures
           </h2>
@@ -27,8 +27,8 @@ export function UpcomingFixtures({ fixtures }: UpcomingFixturesProps) {
               <Button
                 key={filter}
                 variant="ghost"
-                className={`text-sm font-medium rounded-lg px-3 py-1 h-auto hover:bg-elevate hover:text-white transition-colors ${
-                  idx === 0 ? "text-white bg-white/10" : "text-text-secondary"
+                className={`paragraph-14 hover:cursor-pointer font-medium rounded-md px-6 py-2 h-auto hover:bg-elevate hover:text-main-white transition-colors ${
+                  idx === 0 ? "text-main-white bg-white/10" : "text-secondary-white bg-elevate"
                 }`}
               >
                 [{filter}]

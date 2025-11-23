@@ -4,6 +4,7 @@ import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { Providers } from './providers';
 import '@rainbow-me/rainbowkit/styles.css';
+import { TopBar } from "@/components/TopBar";
 
 import {
   getDefaultConfig,
@@ -50,10 +51,13 @@ export default function RootLayout({
         className={`${inter.variable} ${roboto.variable} antialiased`}
       >
         <Providers>
-        <Sidebar />
-        <main className="pl-[28rem] w-full min-h-screen">
-            {children}
-        </main>
+          <Sidebar />
+          <main className="pl-[28rem] w-full min-h-screen bg-black-base">
+            <div className="container-wrapper py-6 space-y-12 px-[6.4rem]">
+                <TopBar />
+                {children}
+            </div>
+          </main>
         </Providers>
       </body>
     </html>
