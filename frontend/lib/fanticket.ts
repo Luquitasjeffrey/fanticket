@@ -6,7 +6,7 @@ import {
   http
 } from "viem";
 
-import {config, network, getConnectedWallet, FAN_TICKET_ADDRESS} from "@/lib/walletconfig";
+import {config, network, getConnectedWallet, FAN_TICKET_ADDRESS, FAN_TOKEN_ADDRESS } from "@/lib/walletconfig";
 
 export const publicClient = createPublicClient({
   chain: network,
@@ -16,7 +16,6 @@ export const publicClient = createPublicClient({
 // ===============================
 // CONFIG
 // ===============================
-const FAN_TOKEN_ADDRESS = '0x67d269191c92caf3cd7723f116c85e6e9bf55933';
 
 // ===============================
 // TYPES

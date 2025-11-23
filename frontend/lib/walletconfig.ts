@@ -1,9 +1,23 @@
 import { injected, walletConnect } from "wagmi/connectors";
 import { hardhat} from "viem/chains";
+import { defineChain } from "viem";
 import {type Address} from "viem";
 import { createConfig, http, getAccount, getWalletClient, connect } from "@wagmi/core";
 
-export const network = hardhat;
+//export const network = hardhat;
+
+export const network = /*#__PURE__*/ defineChain({
+  id: 88882,
+  name: 'Chiliz testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Chiliz',
+    symbol: 'CHZ',
+  },
+  rpcUrls: {
+    default: { http: ['https://spicy-rpc.chiliz.com'] },
+  },
+})
 
 export const PROJECT_ID = '9a4bc6797a2a24b87ee07c4090024bab';
 
@@ -18,8 +32,9 @@ export const config = createConfig({
   ],
 });
 
-export const FAN_TICKET_ADDRESS: Address =
-  "0xe6e340d132b5f46d1e472debcd681b2abc16e57e"; // poné tu contrato
+//export const FAN_TOKEN_ADDRESS = '0x67d269191c92caf3cd7723f116c85e6e9bf55933';
+//export const FAN_TICKET_ADDRESS: Address =
+//  "0xe6e340d132b5f46d1e472debcd681b2abc16e57e"; // poné tu contrato
 
 export async function getConnectedWallet() {
   let acc = getAccount(config);
