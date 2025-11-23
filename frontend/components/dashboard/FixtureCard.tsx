@@ -34,7 +34,7 @@ export function FixtureCard({ id, date, homeTeam, awayTeam, time, venue, price }
 
                                 <Image src="/images/barca-logo.png" alt="FC Barcelona" width={44} height={44} className="size-[4.4rem] object-contain" />
                             </div>
-                            <span className="paragraph-18-medium text-main-white">FC Barcelona</span>
+                            <span className="paragraph-18-medium text-main-white text-center">FC Barcelona</span>
                         </div>
                         <span className="paragraph-24-semibold text-secondary-white">vs</span>
                         <div className="flex flex-col items-center justify-cente gap-3 w-fit h-auto">
@@ -42,7 +42,7 @@ export function FixtureCard({ id, date, homeTeam, awayTeam, time, venue, price }
 
                                 <Image src="/images/atm-logo.png" alt="Atlético de Madrid" width={44} height={44} className="size-[4.4rem] object-contain" />
                             </div>
-                            <span className="paragraph-18-medium text-main-white">Atlético de Madrid</span>
+                            <span className="paragraph-18-medium text-main-white text-center">Atlético de Madrid</span>
                         </div>
                     </div>
 

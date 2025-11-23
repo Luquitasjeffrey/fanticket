@@ -27,7 +27,7 @@ export function ReservationCard({ id, date, homeTeam, awayTeam, time, venue, pri
                     <span className="paragraph-14 font-bold text-main-white">{time}</span>
                 </div>
 
-                <div className="w-full flex-start-col gap-[0.4rem]">
+                <div className="w-full flex-start-col gap-[1.2rem]">
                     {/* Teams */}
                     <div className="flex items-center justify-center w-full h-fit">
                         <div className="w-fit flex-center gap-[2.4rem]">
@@ -36,7 +36,7 @@ export function ReservationCard({ id, date, homeTeam, awayTeam, time, venue, pri
 
                                     <Image src="/images/barca-logo.png" alt="FC Barcelona" width={44} height={44} className="size-[4.4rem] object-contain" />
                                 </div>
-                                <span className="paragraph-18-medium text-main-white">FC Barcelona</span>
+                                <span className="paragraph-18-medium text-main-white text-center">FC Barcelona</span>
                             </div>
                             <span className="paragraph-24-semibold text-secondary-white">vs</span>
                             <div className="flex flex-col items-center justify-cente gap-3 w-fit h-auto">
@@ -44,30 +44,39 @@ export function ReservationCard({ id, date, homeTeam, awayTeam, time, venue, pri
 
                                     <Image src="/images/atm-logo.png" alt="Atlético de Madrid" width={44} height={44} className="size-[4.4rem] object-contain" />
                                 </div>
-                                <span className="paragraph-18-medium text-main-white">Atlético de Madrid</span>
+                                <span className="paragraph-18-medium text-main-white text-center">Atlético de Madrid</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Match Info */}
-                    <div className="flex-1 flex  items-end h-full justify-between pl-6 py-2 gap-[3.2rem]">
-                        <div className="w-full flex items-center justify-between gap-[2.4rem]">                        
-                            <div className="flex items-center justify-center gap-[3.2rem] w-full border-solid border-main-white h-full">
+                        <div className="w-full flex items-center justify-center gap-[2.4rem]">                        
+                            <div className="flex items-center justify-between max-w-[75%] gap-[3.2rem] w-full border-solid border-main-white h-full">
                                 <span className="paragraph-18-semibold text-secondary-white whitespace-nowrap">Section: {''}<span className="text-main-white">StallB</span></span>
                                 <span className="paragraph-18-semibold text-main-white">Row A</span>
                                 <span className="paragraph-18-semibold text-main-white">Seat 4</span>
                                 
                             </div>
-                        {/* CTA */}
-                            <Link href="/" className="px-[2.4rem] py-[6px] rounded-[500px] hover:bg-red-hover bg-red-primary hover:shadow-redGlow text-main-white paragraph-18-semibold gap-[0.8rem] flex-center hover:border-main-white  transition-all duration-500 ease-in-out border-black broder-solid border whitespace-nowrap">
-                                <span>
-
-                                    Finish Purchase 
-                                </span>
-                                <ArrowRight />
-                            </Link>
                         </div>
-                    </div>
+
+                        {/* CTA */}
+              <div className="gap-4 mt-4 w-full flex-center">
+                <button 
+                  className="px-4 py-3 rounded-xl bg-light-gray hover:cursor-pointer hover:bg-slate-800 transition-colors"
+                >
+                  <span className="paragraph-18-medium text-main-white/70">
+                    Cancel Reservation
+                  </span>
+                </button>
+                <button
+                  className="px-4 py-3 rounded-xl  bg-red-primary hover:bg-red-hover transition-colors shadow-lg shadow-red-900/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center hover:cursor-pointer justify-center gap-2"
+                >
+                  <span className="paragraph-18-medium text-main-white">
+
+                    Finish Purchase
+                  </span>
+                </button>
+              </div>
                 </div>
 
             </CardContent>
