@@ -37,7 +37,7 @@ export async function ActiveReservations({ reservations }: UpcomingReservationPr
             ))
           ) : (
             // Empty state
-            <div className="col-span-full py-12 text-center border border-dashed min-h-[60vh] border-slate-800 rounded-xl">
+            <div className="col-span-full py-12 text-center flex-center border border-dashed min-h-[60vh] border-slate-800 rounded-xl">
               <p className="text-main-white paragraph-24-medium text-center">No seats reserved. Please Reserve a seat in a event to see your reservation here</p>
             </div>
           )}
