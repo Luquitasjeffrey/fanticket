@@ -37,6 +37,7 @@ export default async function MyTicketsPage({ params }: Promise<{ params: { user
       )
     `)
     .eq('user_wallet', userAddress)
+    .eq('status', 'staked_waiting_payment')
     .order('created_at', { ascending: false });
 
   if (error) console.error("Error Supabase:", error);
