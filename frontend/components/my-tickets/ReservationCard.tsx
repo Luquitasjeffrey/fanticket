@@ -95,13 +95,8 @@ export function ReservationCard({
                     {/* CTA Buttons */}
                     <div className="gap-4 mt-4 w-full max-w-[65%] flex justify-center">
                         <button 
-<<<<<<< HEAD
                             onClick={() => console.log(id, seat)}
                             className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors border border-white/5"
-=======
-                            onClick={() => alert("Cancel logic here")}
-                            className="px-6 py-3 rounded-xl bg-slate-800 hover:cursor-pointer hover:bg-slate-700 transition-colors w-full border border-white/5"
->>>>>>> 2e769e432050a12c259435c01dedd3303576be64
                         >
                             <span className="paragraph-18-medium text-main-white/70  font-medium">
                                 Cancel
