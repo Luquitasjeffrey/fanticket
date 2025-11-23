@@ -6,7 +6,9 @@ interface UpcomingReservationProps {
     reservations: Reservation[]; 
   }
 
+
 export async function ActiveReservations({ reservations }: UpcomingReservationProps) {
+
 
     return (
         <div className="space-y-6 w-full">
@@ -35,8 +37,8 @@ export async function ActiveReservations({ reservations }: UpcomingReservationPr
             ))
           ) : (
             // Empty state
-            <div className="col-span-full py-12 text-center border border-dashed border-slate-800 rounded-xl">
-              <p className="text-text-secondary">No upcoming matches scheduled.</p>
+            <div className="col-span-full py-12 text-center border border-dashed min-h-[60vh] border-slate-800 rounded-xl">
+              <p className="text-main-white paragraph-24-medium text-center">No seats reserved. Please Reserve a seat in a event to see your reservation here</p>
             </div>
           )}
         </div>

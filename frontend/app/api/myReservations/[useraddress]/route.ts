@@ -32,8 +32,6 @@ export async function GET(
         title,
         event_date,
         stadium_name,
-        min_stake_required,
-        real_event_photo_url
       )`)
 		.eq('user_wallet', useraddress)
 		.eq('status', 'staked_waiting_payment')
