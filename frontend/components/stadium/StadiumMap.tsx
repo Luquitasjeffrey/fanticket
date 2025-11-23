@@ -82,10 +82,20 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
 
       console.log("Staking your tokens", minStake, "CHZ for this spot", selectedSeat.labels.own);
       
+      fetch(`/api/${eventId}/${seatsioId}/markReserved`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userAddress: walletClient.account.address
+        })
+      });
 
       alert(`Congratulations! Your stake was sucessful: The ${selectedSeat.labels.own} seat is reserved!`);
       setIsModalOpen(false);
-      
+
+      window.location.href = '/my-tickets';
     } catch (error) {
       console.error("Staking error:", error);
       alert("There was an error while loading the stake");
