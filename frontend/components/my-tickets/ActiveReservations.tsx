@@ -1,9 +1,9 @@
 import { ReservationCard } from "./ReservationCard";
-import { Fixture } from "@/types";
+import { Reservation } from "@/types";
 
 
 interface UpcomingReservationProps {
-    reservations: Fixture[]; 
+    reservations: Reservation[]; 
   }
 
 export async function ActiveReservations({ reservations }: UpcomingReservationProps) {
@@ -13,7 +13,7 @@ export async function ActiveReservations({ reservations }: UpcomingReservationPr
         {/* Title */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 w-full">
           <h2 className="subtitle-semibold text-main-white">
-            Upcoming Reservations
+            Active Reservations
           </h2>
         </div>
   
@@ -30,6 +30,7 @@ export async function ActiveReservations({ reservations }: UpcomingReservationPr
                 time={reservation.time}
                 venue={reservation.venue}
                 price={reservation.price}
+                seat={reservation.seat}
               />
             ))
           ) : (

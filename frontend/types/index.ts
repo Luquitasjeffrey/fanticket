@@ -17,3 +17,18 @@ export interface Fixture {
     venue: string;
     price: string | number;
   }
+
+  export interface Reservation {
+    id: string;
+    date: FixtureDate;
+    homeTeam: Team;
+    awayTeam: Team;
+    time: string;
+    venue: string;
+    price: string | number;
+    seat: {
+      section: string;
+      row: string;
+      number: string;
+  };
+  }

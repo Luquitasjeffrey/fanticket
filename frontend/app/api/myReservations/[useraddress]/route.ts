@@ -23,9 +23,21 @@ export async function GET(
 
 	const {data, error} = await supabase
 		.from('reservations')
-		.select('event_id, seat_id')
+		.select(`id,
+      seat_id,
+      status,
+      purchase_amount,
+      events (
+        id,
+        title,
+        event_date,
+        stadium_name,
+        min_stake_required,
+        real_event_photo_url
+      )`)
 		.eq('user_wallet', useraddress)
 		.eq('status', 'staked_waiting_payment')
+    .order('created_at', { ascending: false });
 
   console.log('Seat reserved successfully!');
 	if (error) {
