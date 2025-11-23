@@ -9,24 +9,24 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // typescript: { ignoreBuildErrors: true },
-  // serverExternalPackages: [
-  //   "pino", 
-  //   "pino-pretty", 
-  //   "thread-stream", 
-  //   "lokijs", 
-  //   "encoding"
-  // ],
+  typescript: { ignoreBuildErrors: true },
+  serverExternalPackages: [
+    "pino", 
+    "pino-pretty", 
+    "thread-stream", 
+    "lokijs", 
+    "encoding"
+  ],
 
-  // webpack: (config) => {
-  //   config.externals.push("pino-pretty", "lokijs", "encoding");
-  //   config.resolve.fallback = {
-  //     ...config.resolve.fallback,
-  //     fs: false,
-  //     net: false,
-  //     tls: false,
-  //   };
-  //   return config;
-  // },
+  webpack: (config) => {
+    config.externals.push("pino-pretty", "lokijs", "encoding");
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    return config;
+  },
 };
 export default nextConfig;
