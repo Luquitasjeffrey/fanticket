@@ -1,21 +1,11 @@
 // @ts-nocheck
 // fanticket.ts
 import {
-  createPublicClient,
-  custom,
+   custom,
   http
 } from "viem";
 
-import {config, network, getConnectedWallet, FAN_TICKET_ADDRESS, FAN_TOKEN_ADDRESS } from "@/lib/walletconfig";
-
-export const publicClient = createPublicClient({
-  chain: network,
-  transport: http("http://127.0.0.1:8545")  // RPC local
-});
-
-// ===============================
-// CONFIG
-// ===============================
+import {config, network, getConnectedWallet, FAN_TICKET_ADDRESS, FAN_TOKEN_ADDRESS, publicClient } from "@/lib/walletconfig";
 
 // ===============================
 // TYPES

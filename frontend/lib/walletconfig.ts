@@ -1,7 +1,5 @@
-import { injected, walletConnect } from "wagmi/connectors";
-import { hardhat} from "viem/chains";
-import { defineChain } from "viem";
-import {type Address} from "viem";
+import { injected,  walletConnect } from "wagmi/connectors";
+import { defineChain, createPublicClient } from "viem";
 import { createConfig, http, getAccount, getWalletClient, connect } from "@wagmi/core";
 
 //export const network = hardhat;
@@ -24,10 +22,10 @@ export const PROJECT_ID = '9a4bc6797a2a24b87ee07c4090024bab';
 export const config = createConfig({
   chains: [network],
   transports: {
-    [network.id]: http("http://127.0.0.1:8545")
+    [network.id]: http('https://spicy-rpc.chiliz.com') //http("http://127.0.0.1:8545")
   },
   connectors: [
-    injected(), // metamask, brave, etc
+    injected(),
     walletConnect({ projectId: PROJECT_ID, showQrModal: true }),
   ],
 });
@@ -35,6 +33,8 @@ export const config = createConfig({
 //export const FAN_TOKEN_ADDRESS = '0x67d269191c92caf3cd7723f116c85e6e9bf55933';
 //export const FAN_TICKET_ADDRESS: Address =
 //  "0xe6e340d132b5f46d1e472debcd681b2abc16e57e"; // poné tu contrato
+export const FAN_TOKEN_ADDRESS = '0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD';
+export const FAN_TICKET_ADDRESS = '0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2';
 
 export async function getConnectedWallet() {
   let acc = getAccount(config);
@@ -77,3 +77,13 @@ export async function getConnectedWallet() {
 
   return wallet;
 }
+
+/*export const publicClient = createPublicClient({
+  chain: network,
+  transport: http("http://127.0.0.1:8545")  // RPC local
+});*/
+
+export const publicClient = createPublicClient({
+  chain: network,
+  transport: http('https://spicy-rpc.chiliz.com') //http("http://127.0.0.1:8545")  // RPC local
+});

@@ -58,3 +58,4 @@ npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
 
 # Environment variable
 FUNDING_ADDRESS: For testing set it to the address that will receive some testnet ETH and the fanToken
+PRIVATE_KEY: Private key for the deployer

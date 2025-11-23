@@ -1,6 +1,8 @@
 import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
 import { configVariable, defineConfig } from "hardhat/config";
 
+const PRIVATE_KEY = String(process.env.PRIVATE_KEY);
+
 export default defineConfig({
   plugins: [hardhatToolboxViemPlugin],
   solidity: {
@@ -34,5 +36,11 @@ export default defineConfig({
       url: configVariable("SEPOLIA_RPC_URL"),
       accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
     },
+    chilizTestnet: {
+      type: 'http',
+      chainType: 'l1',
+      url: 'https://spicy-rpc.chiliz.com',
+      accounts: [PRIVATE_KEY]
+    }
   },
 });

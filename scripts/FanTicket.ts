@@ -3,7 +3,7 @@ import { network } from "hardhat";
 import { createMatchAndGetId } from "../lib/fanticket.js";
 import { parseEther } from "viem";
 
-const { viem } = await network.connect('localhost');
+const { viem } = await network.connect();
 const publicClient = await viem.getPublicClient();
 const [senderClient] = await viem.getWalletClients();
 
