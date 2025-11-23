@@ -27,8 +27,8 @@ export default async function Dashboard() {
       time,
       venue: event.stadium_id ? "Spotify Camp Nou" : "TBC",
       price: event.min_stake_required,
-      homeTeam: { name: homeName, logo: "/images/generic-shield.png" }, // Placeholder
-      awayTeam: { name: awayName, logo: "/images/generic-shield.png" }  // Placeholder
+      homeTeam: { name: homeName, logo: "/images/barca-logo.png" }, // Placeholder
+      awayTeam: { name: awayName, logo: "/images/atm-logo.png" }  // Placeholder
     };
   }) || [];
 
