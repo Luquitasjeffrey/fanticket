@@ -3,13 +3,28 @@
 import { Search, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { usePathname } from "next/navigation";
 
 export function TopBar() {
+    const pathname = usePathname()
+
+    if (pathname.includes("/settings")){
+        return null
+    }
+
+    const isHome = pathname === "/";
+
     return (
         <div className="flex items-center justify-between py-6">
             <div className="flex-start-col gap-1">
-                <h1 className="h2-medium text-white">Welcome back, Alex.</h1>
-                <p className="text-secondary-white mt-1 text-18">Ready for the next big match?</p>
+                {isHome ? (
+                    <>
+                        <h1 className="h2-medium text-white">Welcome back, Alex.</h1>
+                        <p className="text-secondary-white mt-1 text-18">Ready for the next big match?</p>
+                    </>
+                ) : (
+                    <div />
+                )}
             </div>
 
             <div className="flex items-center gap-4">
@@ -28,7 +43,7 @@ export function TopBar() {
 
                 <Button className="h-12 px-6 rounded-xl bg-transparent border hover:cursor-pointer border-red-primary  hover:bg-red-primary  transition-all" asChild>
                     <span className="hover:text-main-white  text-18 font-medium text-red-primary">
-                    Add Funds
+                    Get Fan Tokens
                         </span>
                 </Button>
             </div>
