@@ -31,6 +31,16 @@ async function cancelReservation({eventId, seat}) {
 	const reservationId = BigInt(contractData.reservationId)
 	const walletClient = await getConnectedWallet();
 	await cancel(walletClient, matchId, reservationId);
+    // Mark as canceled on the database
+    await fetch(`/api/${eventId}/${seatId}/markCanceled`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userAddress: walletClient.account.address
+        })
+    });
 }
 
 export function ReservationCard({ 
