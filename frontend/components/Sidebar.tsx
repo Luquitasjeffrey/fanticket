@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import logoFanticket from "@/public/icons/fanticket-logo.svg"
-import {CustomWalletButton} from '@/components/rainbowkit-button/CustomWalletButton';
+import {CustomWalletButton} from '@/components/CustomWalletButton';
 
 interface MenuItem {
     icon: LucideIcon;
