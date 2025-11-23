@@ -5,45 +5,6 @@ import { createClient } from '@/utils/supabase/server';
 import { formatDateHelper } from '@/utils/date';
 import { Fixture } from "@/types";
 
-// const fixtures = [
-//     {
-//         id: "123",
-//         date: { day: "26", month: "NOV", year: "2025" },
-//         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
-//         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
-//         time: "21:00",
-//         venue: "Camp Nou",
-//         price: "85"
-//     },
-//     {
-//         id: "456",
-//         date: { day: "26", month: "NOV", year: "2025" },
-//         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
-//         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
-//         time: "21:00",
-//         venue: "Camp Nou",
-//         price: "85"
-//     },
-//     {
-//         id: "789",
-//         date: { day: "26", month: "NOV", year: "2025" },
-//         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
-//         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
-//         time: "21:00",
-//         venue: "Camp Nou",
-//         price: "85"
-//     },
-//     {
-//         id: "101112",
-//         date: { day: "26", month: "NOV", year: "2025" },
-//         homeTeam: { name: "FC Barcelona", logo: "/images/barca-logo.png" },
-//         awayTeam: { name: "Atlético de Madrid", logo: "/images/atm-logo.png" },
-//         time: "21:00",
-//         venue: "Camp Nou",
-//         price: "85"
-//     }
-// ];
-
 
 interface UpcomingFixturesProps {
     fixtures: Fixture[]; 
@@ -57,7 +18,7 @@ export function UpcomingFixtures({ fixtures }: UpcomingFixturesProps) {
         <div className="space-y-6">
         {/* Header y Filtros */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <h2 className="text-xl font-semibold text-white uppercase tracking-wide">
+          <h2 className="subtitle-semibold text-main-white">
             Upcoming Fixtures
           </h2>
           

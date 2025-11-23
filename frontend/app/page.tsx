@@ -34,9 +34,9 @@ export default async function Dashboard() {
 
   return (
     <div className="min-h-screen bg-black-base font-inter">
-        <div className="container-wrapper py-6 space-y-[4.8rem] px-[6.4rem]">
+        <div className="container-wrapper py-6 space-y-12 px-[6.4rem]">
           <TopBar />
-          <div>
+          <div className="flex-start-col gap-14">
             <MatchdayOverview />
             <UpcomingFixtures fixtures={formattedFixtures}/>
           </div>

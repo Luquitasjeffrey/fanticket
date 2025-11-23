@@ -123,41 +123,41 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
       {isModalOpen && selectedSeat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
           
-          <div className="bg-slate-900 border border-slate-700 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="bg-slate-900 border border-red-glow w-full max-w-[45rem] rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
             
-            <div className="flex justify-between items-center p-6 border-b border-slate-800 bg-slate-900/50">
-              <h3 className="text-xl font-bold text-white">Reserve your spot</h3>
-              <button onClick={handleCancel} className="text-gray-400 hover:text-white transition-colors">
-                <X size={24} />
+            <div className="flex justify-between items-center p-6 border-b border-light-gray bg-slate-900/50">
+              <h3 className="subtitle-medium text-main-white">Reserve your spot</h3>
+              <button onClick={handleCancel} className="text-gray-400 hover:text-white transition-colors hover:cursor-pointer">
+                <X size={32} />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-6">
-              <div className="flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                <div className="h-12 w-12 rounded-full bg-chiliz-red/20 flex items-center justify-center text-chiliz-red font-bold text-xl">
+            <div className="p-6 space-y-8">
+              <div className="flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-red-glow">
+                <div className="h-12 w-12 rounded-full bg-red-primary/20 flex items-center justify-center text-red-primary paragraph-24-medium">
                   {selectedSeat.labels.own}
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Categories</p>
-                  <p className="font-semibold text-white">{selectedSeat.category?.label || 'General'}</p>
+                  <p className="paragraph-14-normal font-medium text-secondary-white">Categories</p>
+                  <p className="paragraph-18-medium text-main-white">{selectedSeat.category?.label || 'General'}</p>
                 </div>
                 <div className="ml-auto text-right">
-                  <p className="text-sm text-gray-400">Cost of the ticket</p>
-                  <p className="font-semibold text-white">${selectedSeat.pricing?.price || 0}</p>
+                  <p className="paragraph-14-normal font-medium text-secondary-white">Cost of the ticket</p>
+                  <p className="paragraph-18-medium text-main-white">${selectedSeat.pricing?.price || 0}</p>
                 </div>
               </div>
 
               {/* Staking */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-300">Stake required:</span>
-                  <span className="font-bold text-white">{minStake} Fan Tokens</span>
+                  <span className="paragraph-18-normal text-main-white">Stake required:</span>
+                  <span className="paragraph-18-medium text-main-white">{minStake} Fan Tokens</span>
                 </div>
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-chiliz-red w-full animate-pulse"></div>
+                  <div className="h-full bg-red-primary w-full animate-pulse"></div>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="paragraph-14-normal text-secondary-white">
                   * These tokens will get temporarily blocked to ensure your spot in this event.
                 </p>
               </div>
@@ -166,24 +166,30 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <button 
                   onClick={handleCancel}
-                  className="px-4 py-3 rounded-xl font-semibold text-gray-300 hover:bg-slate-800 transition-colors"
+                  className="px-4 py-3 rounded-xl  hover:cursor-pointer hover:bg-slate-800 transition-colors"
                   disabled={isStaking}
                 >
-                  Cancel
+                  <span className="paragraph-18-medium text-secondary-white">
+
+                    Cancel
+                  </span>
                 </button>
                 <button 
                   onClick={handleConfirmStake}
                   disabled={isStaking}
-                  className="px-4 py-3 rounded-xl font-bold text-white bg-chiliz-red hover:bg-red-600 transition-colors shadow-lg shadow-red-900/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="px-4 py-3 rounded-xl  bg-red-primary hover:bg-red-hover transition-colors shadow-lg shadow-red-900/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center hover:cursor-pointer justify-center gap-2"
                 >
-                  {isStaking ? (
-                    <>
-                      <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Processing...
-                    </>
-                  ) : (
-                    "Stake tokens and save your Spot"
-                  )}
+                  <span className="paragraph-18-medium text-main-white">
+
+                    {isStaking ? (
+                      <>
+                        <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        Processing...
+                      </>
+                    ) : (
+                      "Save your Spot"
+                    )}
+                  </span>
                 </button>
               </div>
 
