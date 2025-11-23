@@ -33,6 +33,8 @@ interface MenuSection {
     items: MenuItem[];
 }
 
+const userAddress = '0xbDA5747bFD65F08deb54cb465eB87D40e51B197E';
+
 const menuItems: MenuSection[] = [
     {
         title: "MAIN MENU",
@@ -45,7 +47,7 @@ const menuItems: MenuSection[] = [
     {
         title: "MY FAN ZONE",
         items: [
-            { icon: Ticket, label: "My Tickets", href: "/my-tickets", badge: 1 },
+            { icon: Ticket, label: "My Tickets", href: `/my-tickets/${userAddress}`, badge: 1 },
             // { icon: Wallet, label: "Wallet & Credits", href: "/wallet" },
             { icon: Gift, label: "Rewards Program", href: "/rewards" },
         ]

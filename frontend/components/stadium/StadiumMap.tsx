@@ -5,6 +5,7 @@ import { useState, useRef } from 'react';
 import { X } from 'lucide-react';
 import { reserve } from '@/lib/fanticket';
 import { getConnectedWallet } from '@/lib/walletconfig';
+import { cancel } from '@/lib/fanticket';
 
 interface SeatsioObject {
   id?: string;
@@ -95,7 +96,7 @@ export default function StadiumMap({ eventKey, minStake }: StadiumMapProps) {
       alert(`Congratulations! Your stake was sucessful: The ${selectedSeat.labels.own} seat is reserved!`);
       setIsModalOpen(false);
 
-      window.location.href = '/my-tickets';
+      window.location.href = '/my-tickets/' + walletClient.account.address;
     } catch (error) {
       console.error("Staking error:", error);
       alert("There was an error while loading the stake");

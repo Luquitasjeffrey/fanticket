@@ -1,8 +1,11 @@
+// @ts-nocheck
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { getConnectedWallet } from "@/lib/walletconfig";
+import { cancel } from '@/lib/fanticket';
 
 interface ReservationCardProps {
     id: string;
@@ -19,8 +22,20 @@ interface ReservationCardProps {
     };
 }
 
+async function cancelReservation({eventId, seat}) {
+	console.log(eventId, seat);
+	const seatId = `${seat.section}-${seat.row}-${seat.number}`
+	const response = await fetch(`/api/${eventId}/${seatId}/contractinfo`);
+	const contractData = await response.json();
+	const matchId = BigInt(contractData.matchId);
+	const reservationId = BigInt(contractData.reservationId)
+	const walletClient = await getConnectedWallet();
+	await cancel(walletClient, matchId, reservationId);
+}
+
 export function ReservationCard({ 
-    id, 
+    id,
+	eventId,
     date, 
     homeTeam, 
     awayTeam, 
@@ -95,7 +110,7 @@ export function ReservationCard({
                     {/* CTA Buttons */}
                     <div className="gap-4 mt-4 w-full max-w-[65%] flex justify-center">
                         <button 
-                            onClick={() => console.log(id, seat)}
+                            onClick={() => cancelReservation({eventId, seat}) }
                             className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors border border-white/5"
                         >
                             <span className="paragraph-18-medium text-main-white/70  font-medium">

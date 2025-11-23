@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createClient } from '@/utils/supabase/server'
 import { notFound } from 'next/navigation'
 import { ActiveReservations } from '@/components/my-tickets/ActiveReservations';
@@ -11,16 +12,20 @@ function parseSeatString(seatString: string | undefined | null) {
   return { section: seatString, row: "-", number: "-" };
 }
 
-export default async function MyTicketsPage() {
+export default async function MyTicketsPage({ params }: Promise<{ params: { useraddress: string } }>) {
 
   const supabase = await createClient();
-  const userAddress = "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
+  
+  //const userAddress = "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
+	const {useraddress: userAddress} = await params;
+	console.log("Address: " + userAddress);
 
   const { data: reservationsData, error } = await supabase
     .from('reservations')
     .select(`
       id,
-      seat_id,   
+			event_id,
+      seat_id,
       purchase_amount,
       status,
       events ( 
@@ -50,8 +55,10 @@ export default async function MyTicketsPage() {
    
     const seatDetails = parseSeatString(res.seat_id);
 
+		console.log("EventId: " + res.event_id);
     return {
       id: res.id,
+			eventId: res.event_id,
       date: { day, month, year },
       time,
       venue: event.stadium_name || "FanTicket Arena",

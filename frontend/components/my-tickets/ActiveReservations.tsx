@@ -26,6 +26,7 @@ export async function ActiveReservations({ reservations }: UpcomingReservationPr
               <ReservationCard
                 key={reservation.id}
                 id={reservation.id}
+                eventId={reservation.eventId}
                 date={reservation.date}
                 homeTeam={reservation.homeTeam}
                 awayTeam={reservation.awayTeam}
