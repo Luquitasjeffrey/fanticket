@@ -10,29 +10,70 @@ export async function POST(
   request: Request,
   { params }: RouteParams
 ) {
-	console.log('markReserved!');
-	const body = await request.json();
-  const { seatid, eventid } = await params;
-  
-  const SECRET_KEY = process.env.SEATS_IO_SECRET_KEY;
+  console.log('markReserved!');
 
+  const { seatid, eventid } = await params;
+  const body = await request.json();
+  const wallet = body.userAddress;
+
+  const SECRET_KEY = process.env.SEATS_IO_SECRET_KEY;
   if (!SECRET_KEY) {
-    return NextResponse.json({ error: 'Server configuration error: Missing Secret Key' }, { status: 500 });
+    return NextResponse.json({ error: 'Missing Secret Key' }, { status: 500 });
   }
 
   const supabase = await createClient();
 
-	const { data: insertedRow, error: insertError } = await supabase
-  	.from('reservation')
-  	.insert([
-			{
-				match_id: eventid,
-				seatsio_id: seatid,
-				user_wallet: body.userAddress,
-				status: 'staked_waiting_payment'
-			}
-		]);
+  // 1. Buscar si el user existe
+  const { data: existingUser, error: userSelectError } = await supabase
+    .from('users')
+    .select('wallet_address')
+    .eq('wallet_address', wallet)
+    .single();
 
-	console.log('Seat reserved successfully!');
-	return NextResponse.json({}, {status: 200});
+  if (userSelectError && userSelectError.code !== 'PGRST116') {
+    console.error('Error buscando user:', userSelectError);
+    return NextResponse.json({ error: 'User lookup failed' }, { status: 500 });
+  }
+
+  // 2. Si NO existe → crearlo
+  if (!existingUser) {
+    console.log('User no existe, creando uno nuevo con boilerplate…');
+
+    const { error: userInsertError } = await supabase
+      .from('users')
+      .insert([
+        {
+          wallet_address: wallet,
+          username: null,
+          avatar_url: null,
+          xp_points: 0,
+          chiliz_level: 'Fan'
+        }
+      ]);
+
+    if (userInsertError) {
+      console.error('Error creando user:', userInsertError);
+      return NextResponse.json({ error: 'User creation failed' }, { status: 500 });
+    }
+  }
+
+  // 3. Insertar en reservations (ahora sí)
+  const { error: insertError } = await supabase
+    .from('reservations')
+    .insert([
+      {
+        event_id: eventid,
+        seat_id: seatid,
+        user_wallet: wallet,
+        status: 'staked_waiting_payment'
+      }
+    ]);
+
+  if (insertError) {
+    console.error('Error insertando reservation:', insertError);
+    return NextResponse.json({ error: 'Reservation creation failed' }, { status: 500 });
+  }
+
+  console.log('Seat reserved successfully!');
+  return NextResponse.json({ ok: true }, { status: 200 });
 }
